@@ -10,10 +10,10 @@ const fetchMovies = (keyword) => {
           <img src="${result.Poster}">
           <p>${result.Title}</p>
           </li>`;
-          list.insertAdjacentHTML("beforeend", movieTag);
-        });
+        list.insertAdjacentHTML("beforeend", movieTag);
       });
-}
+    });
+};
 
 form.addEventListener('submit', (event) => {
   event.preventDefault();
