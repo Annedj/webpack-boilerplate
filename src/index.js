@@ -1,25 +1,21 @@
-const list = document.querySelector('#results');
+// Imports
+import { Application } from "stimulus";
+import { definitionsFromContext } from "stimulus/webpack-helpers";
+import { fetchMovies, fillAllMovies } from './movie';
+import { initSortable } from './plugins/init_sortable';
+import { initSelect2 } from './plugins/init_select2';
+
+const application = Application.start();
+const context = require.context("./controllers", true, /\.js$/);
+application.load(definitionsFromContext(context));
+
+// Function calls
+// fetchMovies('Batman');
+initSortable();
+initSelect2();
+
+// Selectors
 const form = document.querySelector('#search-movies');
 
-const fetchMovies = (keyword) => {
-  fetch(`http://www.omdbapi.com/?s=${keyword}&apikey=adf1f2d7`)
-    .then(response => response.json())
-    .then((data) => {
-      data.Search.forEach((result) => {
-        const movieTag = `<li>
-          <img src="${result.Poster}">
-          <p>${result.Title}</p>
-          </li>`;
-        list.insertAdjacentHTML("beforeend", movieTag);
-      });
-    });
-};
-
-form.addEventListener('submit', (event) => {
-  event.preventDefault();
-  list.innerHTML = "";
-  const input = document.querySelector('#keyword');
-  fetchMovies(input.value);
-});
-
-fetchMovies('Batman');
+// Events
+form.addEventListener('submit', fillAllMovies);

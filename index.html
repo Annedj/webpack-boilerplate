@@ -8,6 +8,12 @@
   </head>
   <body>
     <div class="container mt-5">
+      <select class="select-states" name="state">
+        <option value="AL">Alabama</option>
+        <option value="NY">New York</option>
+        <option value="WY">Wyoming</option>
+      </select>
+
       <form id="search-movies" class="form-inline">
         <input id="keyword" type="text" class="form-control ml-auto mr-2" placeholder="Find movies">
         <input type="submit" class="btn btn-primary mr-auto ml-2" value="Search">
@@ -18,6 +24,18 @@
         <ul id="results" class="list-inline d-flex justify-content-center flex-wrap">
           <!-- Our results will appear here! -->
         </ul>
+
+      <div data-controller="disable-button">
+        <button id="clickme"
+                class="btn btn-primary btn-lg"
+                data-disable-button-target="btn"
+                data-action="click->disable-button#disable">
+          Click me!
+        </button>
+        <a  class="d-none"
+            data-disable-button-target="link"
+            data-action="click->disable-button#reset">Reset</a>
+      </div>
 
     </div>
 

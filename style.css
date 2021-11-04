@@ -1,3 +1,5 @@
+@import 'node_modules/select2/dist/css/select2.css';
+
 img {
   height: 350px;
   padding: 5px;
@@ -5,4 +7,17 @@ img {
 
 p {
   font-size: 0.9rem;
+}
+
+#results li {
+  cursor: grab;
+}
+
+#results li:active {
+  cursor: grabbing;
+}
+
+#results li.ghost {
+  filter: grayscale(1);
+  opacity: 0.5;
 }
